@@ -1,11 +1,12 @@
-package com.cg.placement.repository;
+package com.cg.dao;
 import javax.persistence.*;
 
 public class JPAUtil 
 {
 	private static EntityManagerFactory factory;
-	private static EntityManager entityManager;
+	private static EntityManager em;
 	
+	//static block
 	static
 	{
 		factory = Persistence.createEntityManagerFactory("JPA-PU");
@@ -13,10 +14,10 @@ public class JPAUtil
 	
 	public static EntityManager getEntityManager()
 	{
-		if(entityManager==null || !entityManager.isOpen())
+		if (em == null || !em.isOpen())
 		{
-			entityManager = factory.createEntityManager();
+			em = factory.createEntityManager();
 		}
-		return entityManager;
+		return em;
 	}
 }
